@@ -14,20 +14,20 @@
 
 ////////////////////SELECCION DEL TIPO DE USUARIO//////////////////// 
 if($function_type==1){
-    $user=$_POST['type_user'];
+    $user=$_POST['type'];
     if($user==1){$table=$table_db1;} /// 1->clientes 
     if($user==2){$table=$table_db2;} /// 2->empleados
     if($user==3){$table=$table_db3;} /// 3->administradores
     $consulta = mysqli_query($conex,"SELECT * FROM $table");
-    function list_on($consulta);
+    list_on($consulta);
 }
 
 
 //////////////////////////////BUSQUEDA//////////////////////////////
 if($function_type==2){
-    $user_search=$_POST['search'];
+    $user_search=$_POST['my_search'];
     $consulta=mysqli_query($conex,"SELECT * FROM $table_db1 WHERE nombre LIKE '%$user_search%' ");
-    function list_on($consulta);
+    list_on($consulta);
 }
 
     
@@ -37,7 +37,7 @@ if($function_type==2){
 
 
 
-    function list_on(){
+    function list_on($consulta){
         while($data_consulta = mysqli_fetch_array($consulta)){
         echo'
             <tr>

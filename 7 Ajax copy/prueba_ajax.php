@@ -13,17 +13,17 @@
   <h1>PLATAFORMA DE CONTROL</h1>
   <div class="row mb-3">
     <div class="col">
-      <button type="submit" class="btn btn-primary" onclick="button_list(1)">Cliente</button>
+      <button type="submit" class="btn btn-primary" onclick="user_type(1)">Cliente</button>
     </div>
     <div class="col">
-      <button type="submit" class="btn btn-primary" onclick="button_list(2)" >Empleados</button>
+      <button type="submit" class="btn btn-primary" onclick="user_type(2)" >Empleados</button>
     </div>
     <div class="col">
-      <button type="submit" class="btn btn-primary" onclick="button_list(3)">Administradores</button>
+      <button type="submit" class="btn btn-primary" onclick="user_type(3)">Administradores</button>
     </div>
   </div>
   <h1>LISTA DETALLADA</h1>
-  <input class="form-control mb-3" type="text" name="in_search" id="id_search" placeholder="Nombre" onkeypress="search_list()">
+  <input class="form-control mb-3" type="text" name="in_search" id="id_search" placeholder="Nombre" onkeypress="search()">
   <div id="list"></div>
 </div>
 
@@ -41,10 +41,10 @@
 </style>
 <!----------------Codigo AJAX---------------->
 <script>
-  function button_list(user){
+  function user_type(user){
     var list={
-      "type_user":user,
-      "function_type":1,
+      "type":user,
+      "function_type":"1",
     };
 
     $.ajax({
@@ -62,11 +62,11 @@
     });
   }
 
-function search_list(){
-    search=document.getElementByID("id_search").value
+function search(){
+    inf=document.getElementById('id_search').value
     var list={
-      "search"=search,
-      "function_type":2,
+      "my_search":inf,
+      "function_type":"2",
     };
 
     $.ajax({
